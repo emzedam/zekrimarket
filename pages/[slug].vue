@@ -58,6 +58,14 @@
               دیدگاه ها
             </li>
             <li
+              @click="activeTab(3)"
+              v-if="productDetails.video != null"
+              :class="{ 'after:bg-red-500': activeTabIndex == 3 }"
+              class="p-4 cursor-pointer text-center after:content-[''] after:absolute after:w-full after:h-[2px] after:bottom-0 after:duration-300 after:right-0 after:block after:w-w-full relative overflow-hidden"
+            >
+              ویدیو معرفی
+            </li>
+            <li
               class="p-4 cursor-pointer text-center after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-red-500 after:bottom-0 after:duration-300 after:right-0 after:block after:w-w-full relative overflow-hidden hidden"
             >
               اطلاعات فروشنده
@@ -77,6 +85,12 @@
           :productId="product_id"
           :activeTab="activeTabIndex"
           :comments="[]"
+        />
+
+        <introVideo
+          v-if="productDetails.video != null"
+          :videoName="productDetails.video"
+          :activeTab="activeTabIndex"
         />
 
         <SellerInfoSection />
@@ -106,6 +120,7 @@ import Details from "@/components/Content/Products/singlePage/Details.vue";
 import SellerDetail from "@/components/Content/Products/singlePage/SellerDetail.vue";
 import Intro from "@/components/Content/Products/singlePage/Intro.vue";
 import comments from "@/components/Content/Products/singlePage/comments.vue";
+import introVideo from "@/components/Content/Products/singlePage/introVideo.vue";
 import Information from "@/components/Content/Products/singlePage/Information.vue";
 import SellerInfoSection from "@/components/Content/Products/singlePage/SellerInfoSection.vue";
 import SuggestProducts from "@/components/Content/Products/singlePage/SuggestProducts.vue";
